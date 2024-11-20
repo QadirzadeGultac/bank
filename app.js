@@ -43,7 +43,7 @@ function updateExchangeRate() {
             }
         })
 }
-function wifi(){
+function wifi() {
     while (!navigator.onLine) {
         error.classList.remove('disnone');
         break;
@@ -57,12 +57,16 @@ function wifi(){
     }
 }
 
-function ensureSingleDecimal(input) { 
-    let value = input.value; 
-    let parts = value.split('.'); 
-    if (parts.length > 2) { 
-        value = parts[0] + '.' + parts.slice(1).join(''); 
-    } 
+function ensureSingleDecimal(input) {
+    let value = input.value;
+    let parts = value.split('.');
+    if (parts.length > 2) {
+        value = parts[0] + '.' + parts.slice(1).join('');
+    }
+    if (parts[1] && parts[1].length > 5) {
+        parts[1] = parts[1].substring(0, 5);
+        value = parts.join('.');
+    }
     input.value = value;
 }
 
@@ -94,20 +98,20 @@ secondInp.addEventListener('input', () => {
 });
 firstInp.addEventListener("input", () => {
     if (firstInp.value === ".") {
-        firstInp.value = "0."; 
-    } 
-    else { 
-    secondInp.value = (firstInp.value * rate).toFixed(5);
-}
+        firstInp.value = "0.";
+    }
+    else {
+        secondInp.value = (firstInp.value * rate).toFixed(5);
+    }
 });
 
 secondInp.addEventListener("input", () => {
-    if (secondInp.value === ".") { 
-        secondInp.value = "0."; 
-    } 
-    else { 
+    if (secondInp.value === ".") {
+        secondInp.value = "0.";
+    }
+    else {
         firstInp.value = (secondInp.value * rate1).toFixed(5);
-}
+    }
 });
 
 usdOne.addEventListener("click", () => {
