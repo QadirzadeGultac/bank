@@ -2,7 +2,7 @@ function toggleChoice(elements, selectedElement) {
     elements.forEach(element => {
         if (element === selectedElement) {
             element.classList.add("choice");
-        } else {
+        }else {
             element.classList.remove("choice");
         }
     });
