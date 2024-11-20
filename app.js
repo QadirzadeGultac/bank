@@ -41,6 +41,7 @@ function updateExchangeRate() {
             else if (a == 1) {
                 secondInp.value = (firstInp.value * rate).toFixed(5);
             }
+            error.classList.add('disnone')
         })
 }
 function wifi() {
@@ -57,13 +58,13 @@ function wifi() {
     while (navigator.onLine) {
         if (error.classList != "disnone") {
             error.classList.add('disnone')
+            updateExchangeRate();
         }
 
         break;
     }
     
 }
-
 function ensureSingleDecimal(input) {
     let value = input.value;
     let parts = value.split('.');
@@ -179,3 +180,5 @@ gbpTwo.addEventListener("click", () => {
     wifi();
 });
 updateExchangeRate();
+window.addEventListener('online', updateExchangeRate);
+window.addEventListener('offline', wifi);
