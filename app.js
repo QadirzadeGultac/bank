@@ -46,15 +46,22 @@ function updateExchangeRate() {
 function wifi() {
     while (!navigator.onLine) {
         error.classList.remove('disnone');
+        if(a == 1){
+            secondInp.value = "";
+        }
+        else if(a == 2){
+            firstInp.value = "";
+        }
         break;
     }
-
     while (navigator.onLine) {
         if (error.classList != "disnone") {
             error.classList.add('disnone')
         }
+
         break;
     }
+    
 }
 
 function ensureSingleDecimal(input) {
@@ -71,9 +78,9 @@ function ensureSingleDecimal(input) {
 }
 
 firstInp.addEventListener('input', () => {
-    if (firstInp.value.length > 23) {
+    if (firstInp.value.length > 19) {
         let item = firstInp.value.split('');
-        for (let i = 23; i < firstInp.value.length; i++) {
+        for (let i = 19; i < firstInp.value.length; i++) {
             item[i] = "";
         }
         firstInp.value = item.join('');
@@ -103,6 +110,7 @@ firstInp.addEventListener("input", () => {
     else {
         secondInp.value = (firstInp.value * rate).toFixed(5);
     }
+    wifi();
 });
 
 secondInp.addEventListener("input", () => {
@@ -112,6 +120,7 @@ secondInp.addEventListener("input", () => {
     else {
         firstInp.value = (secondInp.value * rate1).toFixed(5);
     }
+    wifi();
 });
 
 usdOne.addEventListener("click", () => {

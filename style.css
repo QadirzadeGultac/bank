@@ -35,9 +35,11 @@ ul{
 }
 ul li{
     margin-right: 2.2vw;
+    color: #959BA4;
 }
 ul:first-child{
     margin-left: 0;
+    color: black;
 }
 ul:last-child{
     margin-right: 5vw;
